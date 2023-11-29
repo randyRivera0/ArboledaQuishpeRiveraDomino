@@ -21,8 +21,12 @@ class Jugador {
         this.manoJugador = manoJugador;
     }
     
+    public Jugador(String nombre){
+        this(nombre, Utilitaria.crearManoJugador());
+    }
+    
     public Ficha getFicha(int indice){
-        if (indice < manoJugador.size()){
+        if (indice >= 0 && indice < manoJugador.size()){
             return manoJugador.get(indice);
         }
         else return null;
@@ -42,8 +46,10 @@ class Jugador {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i < manoJugador.size()-1; i++ ){
             Ficha f = manoJugador.get(i);
-            sb.append(f.getlado1()).append(":").append(f.getLado2());
+            sb.append(f.getLado1()).append(":").append(f.getLado2()).append(" - ");
         }
+        Ficha fFinal = manoJugador.get(manoJugador.size()-1);
+        sb.append(fFinal.getLado1()).append(":").append(fFinal.getLado2());
         System.out.println(sb.toString());
     }
 }

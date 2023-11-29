@@ -17,7 +17,7 @@ public class Ficha {
         this.lado2 = lado2;
     }
     
-    public int getlado1(){
+    public int getLado1(){
         return lado1;
     }
     

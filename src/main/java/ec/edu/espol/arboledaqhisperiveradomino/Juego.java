@@ -14,20 +14,35 @@ import java.util.Scanner;
  */
 public class Juego {
     private ArrayList<Ficha> lineaJuego;
-    private ArrayList<Jugador> Jugadores;
+    private ArrayList<Jugador> jugadores;
     
     public Juego(){
         lineaJuego = new ArrayList<>();
-        Jugadores = new ArrayList<>();
+        jugadores = new ArrayList<>();
     }
+
+    public void setLineaJuego(ArrayList<Ficha> lineaJuego) {
+        this.lineaJuego = lineaJuego;
+    }
+
+    public void setJugadores(String nombre) {
+        if(jugadores.size() < 2){
+            jugadores.add(new Jugador(nombre));
+        }
+    }
+    
+    public ArrayList<Jugador> getJugadores(){
+        return jugadores;
+    }
+    
     
     public void agregarJugador(String nombre){
         Jugador j = new Jugador(nombre, Utilitaria.crearManoJugador());
-        Jugadores.add(j);
+        jugadores.add(j);
     }
     
     public int obtenerValorInicioLinea(){
-        return lineaJuego.get(0).getlado1();
+        return lineaJuego.get(0).getLado1();
     }
     
     public int obtenerValorFinLinea(){
@@ -35,16 +50,19 @@ public class Juego {
     }
     
     public void mostrarLinea(){
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i < lineaJuego.size() -1; i++){
+        
+        if (!lineaJuego.isEmpty()){
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i < lineaJuego.size() -1; i++){
             sb.append(lineaJuego.get(i).toString()).append(" - ");
-            
-        sb.append(lineaJuego.get(lineaJuego.size()-1).toString());
-        System.out.println(sb.toString());
+            }
+            sb.append(lineaJuego.get(lineaJuego.size()-1).toString());
+            System.out.println(sb.toString());
         }
+        
     }
     
-    public void/*boolean*/ agregarFichaLinea(Ficha f, Jugador j){
+    public boolean agregarFichaLinea(Ficha f, Jugador j){
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
         if (f instanceof FichaComodin fComodin){
@@ -59,15 +77,55 @@ public class Juego {
                 String posicion = sc.next();
                 
                 if (posicion.equals("Inicio")){
-                    int lado2 = lineaJuego.get(0).getlado1();
-                    fComodin
+                    int lado2 = lineaJuego.get(0).getLado2();
+                    fComodin.setLado2(lado2);
+                    fComodin.setLado1Scanner(sc);
                     lineaJuego.add(0, fComodin);
+                    
                 }
                 else if (posicion.equals("Fin")){
+                    int lado1 = lineaJuego.get(0).getLado1();
+                    fComodin.setLado1(lado1);
+                    fComodin.setLado2Scanner(sc);
                     lineaJuego.add(lineaJuego.size()-1, fComodin);
-                }
-                
-            }           
+                }  
+            }
+        return true;
+        }
+        
+        else{
+            if(lineaJuego.isEmpty()){
+                lineaJuego.add(f);
+                return true;
+            }
+            
+            else if(lineaJuego.get(0).equals(f.getLado2()) || lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
+               if (lineaJuego.get(0).equals(f.getLado2()) && !lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
+                   lineaJuego.add(0, f);
+               } 
+               else if (!lineaJuego.get(0).equals(f.getLado2()) && lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
+                   lineaJuego.add(lineaJuego.size()-1, f);
+               }
+               
+               else{
+                   System.out.println("Ingrese la posicion donde quiere agregar la ficha");
+                    String posicion = sc.next();
+                    if (posicion.equals("Inicio")){
+                       lineaJuego.add(0, f); 
+                    }
+                    
+                    else if (posicion.equals("Fin")){
+                        lineaJuego.add(lineaJuego.size()-1, f);
+                    }
+               }
+               
+               return true;
+            }
+            
+            else{
+                System.out.println("Ficha tenia " + f.getLado1() + ":" + f.getLado2() + " No puede jugar esa ficha, intentalo de nuevo");
+                return false;
+            }
         }
     }
 }
