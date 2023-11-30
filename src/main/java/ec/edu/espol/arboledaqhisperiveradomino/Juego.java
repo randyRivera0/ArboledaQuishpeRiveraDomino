@@ -70,6 +70,7 @@ public class Juego {
                 fComodin.setLado1Scanner(sc);
                 fComodin.setLado2Scanner(sc);
                 lineaJuego.add(fComodin);
+                j.removerFicha(f);
             }
             
             else{
@@ -77,34 +78,41 @@ public class Juego {
                 String posicion = sc.next();
                 
                 if (posicion.equals("Inicio")){
-                    int lado2 = lineaJuego.get(0).getLado2();
+                    int lado2 = lineaJuego.get(0).getLado1();
                     fComodin.setLado2(lado2);
                     fComodin.setLado1Scanner(sc);
                     lineaJuego.add(0, fComodin);
-                    
+                    j.removerFicha(f);
                 }
+                
                 else if (posicion.equals("Fin")){
-                    int lado1 = lineaJuego.get(0).getLado1();
+                    int lado1 = lineaJuego.get(lineaJuego.size()-1).getLado2();
                     fComodin.setLado1(lado1);
                     fComodin.setLado2Scanner(sc);
-                    lineaJuego.add(lineaJuego.size()-1, fComodin);
+                    lineaJuego.add(fComodin);
+                    j.removerFicha(f);
                 }  
             }
+            
         return true;
+        
         }
         
         else{
             if(lineaJuego.isEmpty()){
                 lineaJuego.add(f);
+                j.removerFicha(f);
                 return true;
             }
             
-            else if(lineaJuego.get(0).equals(f.getLado2()) || lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
-               if (lineaJuego.get(0).equals(f.getLado2()) && !lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
+            else if(lineaJuego.get(0).getLado1() == (f.getLado2()) || lineaJuego.get(lineaJuego.size()-1).getLado2() == f.getLado1()){
+               if (lineaJuego.get(0).getLado1() == (f.getLado2()) && !(lineaJuego.get(lineaJuego.size()-1).getLado2() == (f.getLado1()))){
                    lineaJuego.add(0, f);
+                   j.removerFicha(f);
                } 
-               else if (!lineaJuego.get(0).equals(f.getLado2()) && lineaJuego.get(lineaJuego.size()-1).equals(f.getLado1())){
-                   lineaJuego.add(lineaJuego.size()-1, f);
+               else if (!(lineaJuego.get(0).getLado1() == (f.getLado2())) && lineaJuego.get(lineaJuego.size()-1).getLado2() == f.getLado1()){
+                   lineaJuego.add(f);
+                   j.removerFicha(f);
                }
                
                else{
@@ -112,10 +120,12 @@ public class Juego {
                     String posicion = sc.next();
                     if (posicion.equals("Inicio")){
                        lineaJuego.add(0, f); 
+                       j.removerFicha(f);
                     }
                     
                     else if (posicion.equals("Fin")){
-                        lineaJuego.add(lineaJuego.size()-1, f);
+                        lineaJuego.add(f);
+                        j.removerFicha(f);
                     }
                }
                
