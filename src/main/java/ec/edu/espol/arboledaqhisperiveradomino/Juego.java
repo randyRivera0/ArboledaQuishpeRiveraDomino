@@ -138,4 +138,37 @@ public class Juego {
             }
         }
     }
+    public void jugarmach(Jugador mach){
+        System.out.println("Juega máquina:"+mach.getNombre());
+        System.out.println("Mano máquina");
+        mach.imprimirMano();
+        
+        for (int i=0;i<mach.manoJugador.size();i++){
+            Ficha primera=mach.getFicha(i);
+            if(agregarFichaLinea(primera, mach)){
+                System.out.println("Ficha:"+primera);
+                System.out.println("Nueva línea");
+                mostrarLinea();
+                return;
+            }
+        }
+        for (int i=0;i<mach.manoJugador.size();i++){
+            Ficha primera=mach.getFicha(i);
+            if(primera instanceof FichaComodin){
+                FichaComodin fc=(FichaComodin)primera;
+                if(agregarFichaLinea(fc,mach)){
+                    System.out.println("Ficha comodín de la maquina:"+fc);
+                    System.out.println("Nueva línea");
+                    mostrarLinea();
+                    return;
+                }
+                
+            }
+        }    
+        mach.manoJugador.add(Utilitaria.crearManoJugador().get(0));
+        System.out.println("Nueva ficha de la máquina");
+    } 
+        
+}
+
 }
