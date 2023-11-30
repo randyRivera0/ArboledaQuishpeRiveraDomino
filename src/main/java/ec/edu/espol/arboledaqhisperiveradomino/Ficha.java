@@ -28,6 +28,6 @@ public class Ficha {
     @Override
     public String toString(){
         return lado1 + ":" + lado2;
-    }
-
+    }    
+    
 }
