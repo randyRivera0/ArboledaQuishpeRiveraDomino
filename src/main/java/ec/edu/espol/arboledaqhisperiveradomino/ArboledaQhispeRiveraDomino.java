@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ArboledaQhispeRiveraDomino {
     
     public static void turno(Jugador jugador, Juego juego, Scanner sc){
-        System.out.print("Jugador0: Mano -> ");
+        System.out.print("Jugador " + jugador.getNombre() + ": Mano -> ");
             jugador.imprimirMano();
             System.out.print("Linea de Juego: ");
             juego.mostrarLinea();
@@ -27,6 +27,9 @@ public class ArboledaQhispeRiveraDomino {
     }
     
     public static void main(String[] args) {
+        
+        // implementar menu y automatico
+        
         Scanner sc = new Scanner(System.in);
         Juego juego = new Juego();
         sc.useDelimiter("\n");

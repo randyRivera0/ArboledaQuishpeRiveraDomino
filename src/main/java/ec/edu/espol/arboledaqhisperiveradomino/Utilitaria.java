@@ -15,10 +15,10 @@ class Utilitaria {
     
     public static ArrayList<Ficha> crearManoJugador(){
         ArrayList<Ficha> mano = new ArrayList<>();
-        for(int i=0; i<6; i++){
-            Random r = new Random(7);
-            int lado1 = r.nextInt();
-            int lado2 = r.nextInt();
+        for(int i=0; i<5; i++){
+            Random r = new Random();
+            int lado1 = r.nextInt(7);
+            int lado2 = r.nextInt(7);
             Ficha f = new Ficha(lado1, lado2);
             mano.add(f);
         }
