@@ -9,5 +9,7 @@ package ec.edu.espol.arboledaqhisperiveradomino;
  * @author spupi
  */
 public class JugadorMaquina extends Jugador{
-    
+    public JugadorMaquina(){
+        super("Maquina", Utilitaria.crearManoJugador());
+    }
 }
