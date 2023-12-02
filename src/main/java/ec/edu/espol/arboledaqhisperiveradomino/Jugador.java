@@ -13,6 +13,7 @@ import java.util.ArrayList;
 class Jugador {
     String nombre;
     ArrayList<Ficha> manoJugador;
+    int posibilidades;
     
     public Jugador(){}
     
@@ -52,4 +53,25 @@ class Jugador {
         sb.append(fFinal.getLado1()).append(":").append(fFinal.getLado2());
         System.out.println(sb.toString());
     }
+    
+    /*
+    public static boolean posibleFichaAFicha(Ficha f1, Ficha f2){
+       return (f1.getLado1() == f2.getLado2() || f1.getLado2() == f2.getLado1());
+    }
+    */
+    
+    public static boolean posibleFichaALinea(Ficha f, Juego j){
+        if (j.getLineaJuego().isEmpty()) return true;
+        else if (f instanceof FichaComodin) return true;
+        else return (f.getLado1() == j.obtenerValorFinLinea() || f.getLado2() == j.obtenerValorInicioLinea());           
+    }
+    
+    public void posibilidades(Juego j){     
+        for (Ficha fJugador : manoJugador){
+            if (posibleFichaALinea(fJugador, j)){
+                    posibilidades += 1;
+                }
+            }
+        }
+       
 }

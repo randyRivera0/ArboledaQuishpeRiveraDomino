@@ -16,21 +16,26 @@ public class FichaComodin extends Ficha{
     }
     
     public void setLado1(int lado1){
-        this.lado1 = lado1;
+        if (lado1 >= 0){
+            this.lado1 = lado1;    
+        } else this.lado1 = 0;
+        
     }
     
     public void setLado2(int lado2){
-        this.lado2 = lado2;
+        if (lado2 >= 0){
+            this.lado2 = lado2;
+        } else this.lado2 = 0;
     }
     
     public void setLado1Scanner(Scanner sc){
-        System.out.println("Ingrese el valor del lado1: ");
+        System.out.print("Ingrese el valor del lado1: ");
         int lado1 = sc.nextInt();
-        this.setLado2(lado1);
+        this.setLado1(lado1);
     }
     
     public void setLado2Scanner(Scanner sc){
-        System.out.println("Ingrese el valor del lado2: ");
+        System.out.print("Ingrese el valor del lado2: ");
         int lado2 = sc.nextInt();
         this.setLado2(lado2);
     }
