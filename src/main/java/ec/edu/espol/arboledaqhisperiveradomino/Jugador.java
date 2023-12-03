@@ -48,10 +48,10 @@ class Jugador {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i < manoJugador.size()-1; i++ ){
             Ficha f = manoJugador.get(i);
-            sb.append(f.getLado1()).append(":").append(f.getLado2()).append(" - ");
+            sb.append(f).append(" - ");
         }
         Ficha fFinal = manoJugador.get(manoJugador.size()-1);
-        sb.append(fFinal.getLado1()).append(":").append(fFinal.getLado2());
+        sb.append(fFinal);
         System.out.println(sb.toString());
     }
     
@@ -168,7 +168,7 @@ class Jugador {
             }
 
             else{
-                System.out.println("Ficha tenia " + f.getLado1() + ":" + f.getLado2() + " No puede jugar esa ficha, intentelo de nuevo");
+                System.out.println("Ficha tenia " + f + " No puede jugar esa ficha, intentelo de nuevo");
                 return false;
             }
         }    

@@ -89,7 +89,7 @@ public class JugadorMaquina extends Jugador{
                     }
 
                     else{
-                        System.out.println("Ficha tenia " + f.getLado1() + ":" + f.getLado2() + " No puede jugar esa ficha, intentalo de nuevo");
+                        System.out.println("Ficha tenia " + f + " No puede jugar esa ficha, intentalo de nuevo");
                         return false;
                     }
                 }

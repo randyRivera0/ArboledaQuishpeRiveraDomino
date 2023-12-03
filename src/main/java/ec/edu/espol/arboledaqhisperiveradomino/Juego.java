@@ -52,8 +52,8 @@ public class Juego {
     }
     
     public void mostrarLinea(){
-        
-        if (!lineaJuego.isEmpty()){
+        if (lineaJuego.isEmpty()) System.out.println("");        
+        else{
             StringBuilder sb = new StringBuilder();
             
             for(int i=0; i < lineaJuego.size() -1; i++){
