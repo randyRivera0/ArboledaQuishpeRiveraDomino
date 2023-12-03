@@ -109,7 +109,7 @@ class Jugador {
                     }
 
                     else{
-                        System.out.println("Ingrese la posicion donde quiere agregar la ficha (Inicio o Fin)");
+                        System.out.println("Ingrese la posicion donde quiere agregar la ficha (Inicio o Fin): ");
                         String posicion = sc.next();
 
                         if (posicion.equals("Inicio")){
