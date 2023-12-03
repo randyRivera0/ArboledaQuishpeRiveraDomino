@@ -14,12 +14,11 @@ import java.util.Scanner;
 public class Juego {
     private ArrayList<Ficha> lineaJuego;
     private ArrayList<Jugador> jugadores;
-    private int nFichasIniciales;
+    static int nFichasIniciales;
     
-    public Juego(int nFichasIniciales){
+    public Juego(){
         lineaJuego = new ArrayList<>();
         jugadores = new ArrayList<>();
-        this.nFichasIniciales = nFichasIniciales;
     }
 
     public int getnFichasIniciales() {
@@ -89,9 +88,8 @@ public class Juego {
         juego.setJugador(jugador);        
         juego.setJugador(maquina);
         
-        // jugador.posibilidades = this.getNFichasIniciales();
-        jugador.posibilidades = 6;
-        maquina.posibilidades = 6;
+        jugador.posibilidades = nFichasIniciales;
+        maquina.posibilidades = nFichasIniciales;
 
         while(!jugador.manoJugador.isEmpty()&&!maquina.manoJugador.isEmpty()&&(!((jugador.posibilidades==0)&&(maquina.posibilidades==0)))){
             jugador.turno(juego, sc);
@@ -113,8 +111,8 @@ public class Juego {
         juego.setJugador(jugador1);
         juego.setJugador(jugador2);                   
 
-        jugador1.posibilidades = 6;
-        jugador2.posibilidades = 6;
+        jugador1.posibilidades = nFichasIniciales;
+        jugador2.posibilidades = nFichasIniciales;
         
         while(!jugador1.manoJugador.isEmpty()&&!jugador2.manoJugador.isEmpty()&&(!((jugador1.posibilidades==0)&&(jugador2.posibilidades==0)))){
             jugador1.turno(juego, sc);
@@ -130,8 +128,8 @@ public class Juego {
         sc.useDelimiter("\n");
         
         System.out.print("Escriba el numero de fichas iniciales: ");
-        int nFichasIniciales = sc.nextInt();
-        Juego juego = new Juego(nFichasIniciales);
+        nFichasIniciales = sc.nextInt();
+        Juego juego = new Juego();
         
         System.out.print("1 Jugador o 2 Jugadores (Escriba 1 o 2): ");
         String modo = sc.next();

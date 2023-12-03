@@ -15,7 +15,7 @@ class Utilitaria {
     
     public static ArrayList<Ficha> crearManoJugador(){
         ArrayList<Ficha> mano = new ArrayList<>();
-        for(int i=0; i<5; i++){
+        for(int i=0; i<Juego.nFichasIniciales-1; i++){
             Random r = new Random();
             int lado1 = r.nextInt(7);
             int lado2 = r.nextInt(7);
