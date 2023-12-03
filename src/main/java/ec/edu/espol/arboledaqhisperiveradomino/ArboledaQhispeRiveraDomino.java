@@ -12,95 +12,7 @@ import java.util.Scanner;
  */
 public class ArboledaQhispeRiveraDomino {
     
-    public static void turno(Jugador jugador, Juego juego, Scanner sc){
-      
-        if (jugador instanceof JugadorMaquina){
-            System.out.print("Jugador " + jugador.getNombre() + ": Mano -> ");
-            jugador.imprimirMano();
-            System.out.print("Linea de Juego: ");
-            juego.mostrarLinea();
-            jugador.posibilidades = 0;
-            jugador.posibilidades(juego);
-            System.out.println("Posibilidades: " + jugador.posibilidades);
-            if (jugador.posibilidades > 0){
-                for (Ficha f : jugador.manoJugador){
-                    if(Jugador.posibleFichaALinea(f, juego)){
-                        juego.agregarFichaLinea(f, jugador);
-                        System.out.println("Movimiento Valido");
-                        break;
-                    }
-                }
-            } else System.out.println("Movimiento No Valido");
-            System.out.print("Nueva Linea de Juego: ");
-            juego.mostrarLinea();
-        }
-        
-        else {
-            System.out.print("Jugador " + jugador.getNombre() + ": Mano -> ");
-            jugador.imprimirMano();
-            System.out.print("Linea de Juego: ");
-            juego.mostrarLinea();
-            jugador.posibilidades = 0;
-            jugador.posibilidades(juego);
-            System.out.println("Posibilidades: " + jugador.posibilidades);          
-            System.out.print("Indice de ficha para jugar (0 es el primero): ");
-            int indice = sc.nextInt();
-            boolean valido = false;
-            if (indice < jugador.manoJugador.size()){
-                valido = juego.agregarFichaLinea(jugador.getFicha(indice), jugador);
-            }
-            if (valido) System.out.println("Movimiento Valido");
-            else System.out.println("Movimiento No Valido");
-            System.out.print("Nueva Linea de Juego: ");
-            juego.mostrarLinea();
-        }     
-    }
-    
-    public static void modo1(Juego juego, Scanner sc){
-        System.out.print("Ingrese el nombre del jugador: ");
-        String nombrej = sc.next();
-        juego.setJugadores(nombrej);
-        Jugador jugador = juego.getJugadores().get(0);
-        JugadorMaquina maquina = new JugadorMaquina();
-        juego.setJugadores(maquina);
-        jugador.posibilidades = 6;
-        maquina.posibilidades = 6;
-
-        while(!jugador.manoJugador.isEmpty()&&!maquina.manoJugador.isEmpty()&&(!((jugador.posibilidades==0)&&(maquina.posibilidades==0)))){
-            turno(jugador, juego, sc);
-            turno(maquina, juego, sc);
-        }
-        
-        if (jugador.manoJugador.size() < maquina.manoJugador.size()){
-            System.out.println("Gano el jugador 1: " + jugador.getNombre());
-        }
-        
-        else if (jugador.manoJugador.size() > maquina.manoJugador.size()){
-            System.out.println("Gano el jugador 2: " + maquina.getNombre());    
-        }
-        
-        else System.out.println("Empate entre: " + jugador.getNombre() + " y " + maquina.getNombre());
-    
-    }
-    
-    public static void modo2(Juego juego, Scanner sc){
-        System.out.print("Ingrese el nombre del jugador 1: ");
-        String nombrej1 = sc.next();
-        juego.setJugadores(nombrej1);
-        System.out.print("Ingrese el nombre del jugador 2: ");
-        String nombrej2 = sc.next();
-        juego.setJugadores(nombrej2);
-        
-        Jugador jugador1 = juego.getJugadores().get(0);
-        Jugador jugador2 = juego.getJugadores().get(1);
-
-        jugador1.posibilidades = 6;
-        jugador2.posibilidades = 6;
-        while(!jugador1.manoJugador.isEmpty()&&!jugador2.manoJugador.isEmpty()&&(!((jugador1.posibilidades==0)&&(jugador2.posibilidades==0)))){
-            turno(jugador1, juego, sc);
-            turno(jugador2, juego, sc);
-        }
-        
+    public static void ganador(Jugador jugador1, Jugador jugador2){
         if (jugador1.manoJugador.size() < jugador2.manoJugador.size()){
             System.out.println("Gano el jugador 1: " + jugador1.getNombre());
         }
@@ -110,29 +22,73 @@ public class ArboledaQhispeRiveraDomino {
         }
         
         else System.out.println("Empate entre: " + jugador1.getNombre() + " y " + jugador2.getNombre());
+    
+    }
+    
+    public static void modo1(Juego juego, Scanner sc){
+        System.out.println("MODO 1");
+        System.out.print("Ingrese el nombre del jugador: ");
+        String nombrej = sc.next();
+        Jugador jugador = new Jugador(nombrej);
+        JugadorMaquina maquina = new JugadorMaquina();
+        
+        juego.setJugador(jugador);        
+        juego.setJugador(maquina);
+        
+        jugador.posibilidades = 6;
+        maquina.posibilidades = 6;
+
+        while(!jugador.manoJugador.isEmpty()&&!maquina.manoJugador.isEmpty()&&(!((jugador.posibilidades==0)&&(maquina.posibilidades==0)))){
+            jugador.turno(juego, sc);
+            maquina.turno(juego, sc);
+        }      
+        
+        ganador(jugador, maquina);
+    }
+    
+    public static void modo2(Juego juego, Scanner sc){
+        System.out.println("MODO 2");
+        System.out.print("Ingrese el nombre del jugador 1: ");
+        String nombrej1 = sc.next();
+        System.out.print("Ingrese el nombre del jugador 2: ");
+        String nombrej2 = sc.next();
+        Jugador jugador1 = new Jugador(nombrej1);
+        Jugador jugador2 = new Jugador(nombrej2);
+        
+        juego.setJugador(jugador1);
+        juego.setJugador(jugador2);                   
+
+        jugador1.posibilidades = 6;
+        jugador2.posibilidades = 6;
+        
+        while(!jugador1.manoJugador.isEmpty()&&!jugador2.manoJugador.isEmpty()&&(!((jugador1.posibilidades==0)&&(jugador2.posibilidades==0)))){
+            jugador1.turno(juego, sc);
+            jugador2.turno(juego, sc);
+        }
+        
+        ganador(jugador1, jugador2);
     }
     
     public static void main(String[] args) {
-        
-        // implementar menu y automatico
-        
+
         Scanner sc = new Scanner(System.in);
-        Juego juego = new Juego();
         sc.useDelimiter("\n");
+        Juego juego = new Juego();
+        
         
         System.out.print("1 Jugador o 2 Jugadores (Escriba 1 o 2): ");
-        int modo = sc.nextInt();
+        String modo = sc.next();
         
-        while(!(modo==1 || modo==2)){
+        while(!(modo.equals("1") || modo.equals("2"))){
             System.out.print("Opcion no valida. 1 Jugador o 2 Jugadores (Escriba 1 o 2): ");
-            modo = sc.nextInt();
+            modo = sc.next();
         }
         
-        if(modo==1){
+        if(modo.equals("1")){
             ArboledaQhispeRiveraDomino.modo1(juego, sc);
             }
         
-        else if (modo==2){
+        else if (modo.equals("2")){
             ArboledaQhispeRiveraDomino.modo2(juego, sc);
         }
                 
