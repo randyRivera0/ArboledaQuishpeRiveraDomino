@@ -14,10 +14,16 @@ import java.util.Scanner;
 public class Juego {
     private ArrayList<Ficha> lineaJuego;
     private ArrayList<Jugador> jugadores;
+    private int nFichasIniciales;
     
-    public Juego(){
+    public Juego(int nFichasIniciales){
         lineaJuego = new ArrayList<>();
         jugadores = new ArrayList<>();
+        this.nFichasIniciales = nFichasIniciales;
+    }
+
+    public int getnFichasIniciales() {
+        return nFichasIniciales;
     }
 
     public void setLineaJuego(ArrayList<Ficha> lineaJuego) {
@@ -83,6 +89,7 @@ public class Juego {
         juego.setJugador(jugador);        
         juego.setJugador(maquina);
         
+        // jugador.posibilidades = this.getNFichasIniciales();
         jugador.posibilidades = 6;
         maquina.posibilidades = 6;
 
@@ -121,8 +128,10 @@ public class Juego {
 
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
-        Juego juego = new Juego();
         
+        System.out.print("Escriba el numero de fichas iniciales: ");
+        int nFichasIniciales = sc.nextInt();
+        Juego juego = new Juego(nFichasIniciales);
         
         System.out.print("1 Jugador o 2 Jugadores (Escriba 1 o 2): ");
         String modo = sc.next();
