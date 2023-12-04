@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author spupi
+ * @author 
  */
 public class main {
     public static void main(String[] args) {

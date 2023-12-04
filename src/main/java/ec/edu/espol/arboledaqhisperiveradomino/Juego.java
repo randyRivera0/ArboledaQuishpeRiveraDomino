@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author spupi
+ * @author 
  */
 public class Juego {
     private ArrayList<Ficha> lineaJuego;

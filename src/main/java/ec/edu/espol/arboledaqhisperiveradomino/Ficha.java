@@ -6,7 +6,7 @@ package ec.edu.espol.arboledaqhisperiveradomino;
 
 /**
  *
- * @author spupi
+ * @author 
  */
 public class Ficha {
     protected int lado1;

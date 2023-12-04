@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author spupi
+ * @author 
  */
 class Utilitaria {
     

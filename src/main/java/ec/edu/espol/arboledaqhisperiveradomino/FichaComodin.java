@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author spupi
+ * @author 
  */
 public class FichaComodin extends Ficha{
     public FichaComodin(){
