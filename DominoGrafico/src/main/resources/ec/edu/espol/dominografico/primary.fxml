@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Línea de Juego" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin></Label>
+                  <HBox fx:id="lineaJuego" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Jugador 1 -&gt; Máquina" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="19.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" />
+                           </VBox.margin></Label>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="mazoMaquina" alignment="CENTER" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Jugador 2 -&gt; Usted" textFill="WHITE">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="19.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" />
+                           </VBox.margin></Label>
+                        <Label fx:id="labelPosibilidadesJugador" text="Posibilidades" textFill="WHITE">
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" top="20.0" />
+                           </VBox.margin></Label>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="mazoJugador" alignment="CENTER" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-effect: dropshadow(three-pass-box, black, 4, 1, 0, 0);" text="D O M I N O">
+               <font>
+                  <Font name="Bernard MT Condensed" size="70.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.4852398664748977" centerY="0.4810725191038113" cycleMethod="REFLECT" focusDistance="-0.12213746281980553" radius="0.36259541984732824">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.42776694893836975" green="0.6075373888015747" blue="0.8771929740905762" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.6952566504478455" green="0.7966482639312744" blue="0.9385964870452881" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.42899999022483826" green="0.5869500041007996" blue="0.7799999713897705" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.015728160637310976">
+                           <color>
+                              <Color red="0.9753086566925049" green="0.9930041432380676" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7630135865117039">
+                           <color>
+                              <Color red="0.7058823704719543" green="0.7176470756530762" blue="0.929411768913269" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.814181262617995">
+                           <color>
+                              <Color red="0.7058823704719543" green="0.7176470756530762" blue="0.929411768913269" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.7058823704719543" green="0.7176470756530762" blue="0.929411768913269" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

@@ -1,0 +1,11 @@
+modelo\Juego.class
+modelo\IllegalPosicionException.class
+ec\edu\espol\dominografico\SecondaryController.class
+ec\edu\espol\dominografico\App.class
+modelo\Jugador.class
+ec\edu\espol\dominografico\PrimaryController.class
+modelo\Ficha.class
+modelo\JugadorMaquina.class
+modelo\FichaComodin.class
+module-info.class
+modelo\IllegalLadoException.class

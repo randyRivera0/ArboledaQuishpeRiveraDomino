@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #190257;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.dominografico.SecondaryController">
+    <children>
+      <Label style="-fx-effect: dropshadow(three-pass-box, black, 3, 1, 0, 0);" text="FICHA COMODÍN" wrapText="true">
+         <font>
+            <Font name="Bernard MT Condensed" size="36.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5073800456479907" centerY="0.5" radius="0.5152671173328662">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6010468602180481" green="0.49880874156951904" blue="0.859649121761322" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill></Label>
+      <HBox VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Posición Inicio o Fin" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="19.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="textFieldPosicion" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Lado 1" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Italic" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="textFieldLado1" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Lado 2" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Italic" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="textFieldLado2" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+        <Button fx:id="buttonComodin" onMouseClicked="#getValoresFichaComodinXVista" style="-fx-background-color: EAADF6; -fx-effect: dropshadow(three-pass-box, black, 2, 1, 0, 0);" text="Ingresar">
+         <font>
+            <Font name="Comic Sans MS Bold" size="19.0" />
+         </font></Button>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>
